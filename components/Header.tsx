@@ -34,7 +34,7 @@ export function Header() {
   return (
     <header className="site-header">
       <div className="wrap site-header__inner">
-        <Link href="/" className="site-header__logo" aria-label="Acasă">
+        <Link href="/" className="site-header__logo">
           <Logo />
         </Link>
 

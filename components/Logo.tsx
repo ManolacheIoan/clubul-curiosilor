@@ -26,7 +26,7 @@ export function Logo({ className }: { className?: string }) {
     <span className={`logo ${className ?? ""}`}>
       <LogoMark className="logo__mark" />
       <span className="logo__text">
-        {small ? <span className="logo__small">{small}</span> : null}
+        {small ? <span className="logo__small">{small} </span> : null}
         <span className="logo__big">{big}</span>
       </span>
     </span>
