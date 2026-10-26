@@ -8,7 +8,7 @@ import { BUSINESS_NAME, site } from "@/config/site";
 import "./globals.css";
 
 // Fonturi găzduite local: Baloo 2 (rotunjit, titluri; are ă, ș, ț) și Nunito Sans (text).
-// Se preîncarcă fișierele folosite în primul ecran; „latin-ext” al textului (ă, ș, ț) vine imediat după.
+// Toate patru se preîncarcă: textele românești au ă, ș, ț (din „latin-ext”) chiar în primul ecran.
 const display = localFont({
   src: "./fonts/baloo-2-latin-wght-normal.woff2",
   weight: "400 800",
@@ -36,7 +36,6 @@ const textExt = localFont({
   variable: "--font-text-ext",
   display: "swap",
   adjustFontFallback: false,
-  preload: false,
 });
 
 export const metadata: Metadata = {

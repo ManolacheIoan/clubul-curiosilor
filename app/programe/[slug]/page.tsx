@@ -63,20 +63,20 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
 
       <div className="wrap program-layout">
         <div className="program-main">
-          <Reveal as="section" className="prose">
+          <section className="prose">
             <h2>Despre misiune</h2>
             {program.description.map((p) => (
               <p key={p.slice(0, 24)}>{p}</p>
             ))}
-          </Reveal>
-          <Reveal as="section" className="prose">
+          </section>
+          <section className="prose">
             <h2>Ce urmărim</h2>
             <ul className="checklist">
               {program.objectives.map((o) => (
                 <li key={o}>{o}</li>
               ))}
             </ul>
-          </Reveal>
+          </section>
           {instructor ? (
             <Reveal as="section" className="instructor card">
               <Avatar avatar={instructor.avatar} className="instructor__avatar" />

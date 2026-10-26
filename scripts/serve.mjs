@@ -42,7 +42,8 @@ createServer(async (req, res) => {
   const file = await resolve(req.url ?? "/");
   if (!file) {
     res.writeHead(404, { "content-type": types[".html"] });
-    res.end(await readFile(join(root, "404.html")));
+    // Dacă out/ lipsește (de ex. în timpul unui build), serverul nu trebuie să cadă.
+    res.end(await readFile(join(root, "404.html")).catch(() => "404"));
     return;
   }
   const type = types[extname(file)] ?? "application/octet-stream";

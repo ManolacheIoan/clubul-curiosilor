@@ -1841,6 +1841,7 @@ textarea:focus-visible {
 
 .tmap-section {
   padding-top: 16px;
+  overflow-x: clip;
 }
 .tmap {
   position: relative;
@@ -2015,9 +2016,16 @@ html:not(.js) .tmap__card::before {
       transform 0.5s var(--ease),
       opacity 0.4s;
   }
+  /* Opririle neatinse încă: doar iconița și personajul pălesc; textul rămâne lizibil (contrast AA). */
   html.js .tmap__stop:not(.is-reached) .tmap__card {
-    opacity: 0.55;
     transform: scale(0.97);
+    border-style: dashed;
+  }
+  html.js .tmap__stop:not(.is-reached) :is(.tmap__icon, .tmap__char) {
+    opacity: 0.45;
+  }
+  .tmap__char {
+    transition: opacity 0.4s;
   }
 }
 @media (min-width: 860px) {

@@ -29,11 +29,15 @@ test.describe("Site", () => {
     }
   });
 
-  test("fără derulare orizontală", async ({ page }) => {
+  test("fără derulare orizontală și fără lărgirea ferestrei pe telefon", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "no-preference" });
     for (const path of pages) {
       await page.goto(path);
+      await page.waitForTimeout(300);
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       expect(overflow, path).toBeLessThanOrEqual(0);
+      // Pe telefon, un element prea lat ar „lărgi” fereastra (și ar muta bara fixă).
+      expect(await page.evaluate(() => window.innerWidth), path).toBe(page.viewportSize()!.width);
     }
   });
 

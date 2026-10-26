@@ -83,8 +83,9 @@ export function TreasureMap({ stops }: { stops: DayStop[] }) {
       el.parentElement?.style.setProperty("--p", p.toFixed(4));
       items.forEach((s, i) => s.classList.toggle("is-reached", p >= (i + 0.35) / n));
       // Explorator pe traseul vizibil (cel lat sau cel îngust, după lățimea ecranului).
+      // Traseul vizibil: cel al cărui <svg> are lățime (pe telefon linia e verticală, deci nu măsurăm calea).
       const path = Array.from(el.parentElement!.querySelectorAll<SVGPathElement>(".tmap__ghost")).find(
-        (x) => x.getBoundingClientRect().width > 0,
+        (x) => (x.ownerSVGElement?.getBoundingClientRect().width ?? 0) > 0,
       );
       if (marker && path) {
         const len = path.getTotalLength();
