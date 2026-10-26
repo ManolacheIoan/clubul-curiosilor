@@ -70,9 +70,14 @@ describe("validateStep", () => {
 });
 
 describe("toPayload", () => {
+  it("pentru tabere include perioada scrisă pe înțeles", () => {
+    const p = toPayload({ ...valid, choice: "tabara:micii-arheologi", period: "2027-07-19" });
+    expect(p.alegere).toMatchObject({ tip: "tabara", saptamana: "2027-07-19", perioada: "19–23 iulie 2027" });
+  });
+
   it("curăță datele și normalizează telefoanele", () => {
     const p = toPayload({ ...valid, childName: "  Maria Ionescu ", pickup: [...valid.pickup, { name: "", relation: "", phone: "" }] });
-    expect(p.copil).toEqual({ nume: "Maria Ionescu", varsta: 8, grupa: "7-10" });
+    expect(p.copil).toEqual({ nume: "Maria Ionescu", varsta: 8, grupa: "7-10", club: "Clubul Busolelor" });
     expect(p.parinte.telefon).toBe("0722123456");
     expect(p.preluare).toEqual([{ nume: "Ion Ionescu", relatie: "bunic", telefon: "0733111222" }]);
     expect(p.alegere).toMatchObject({ tip: "program", slug: "engleza" });

@@ -56,9 +56,9 @@ export function getEnrolmentAdapter(endpoint: string = site.enrolmentEndpoint): 
 /** Textul cererii, pentru e-mail (mailto) sau pentru citit la telefon. */
 export function payloadToText(p: EnrolmentPayload): string {
   const lines = [
-    `Copil: ${p.copil.nume}, ${p.copil.varsta} ani (grupa ${p.copil.grupa})`,
+    `Copil: ${p.copil.nume}, ${p.copil.varsta} ani, ${p.copil.club || `grupa ${p.copil.grupa}`}`,
     `Părinte: ${p.parinte.nume}, tel. ${p.parinte.telefon}, ${p.parinte.email}`,
-    `Alegere: ${p.alegere ? `${p.alegere.nume}${p.alegere.saptamana ? `, săptămâna din ${p.alegere.saptamana}` : ""}` : "-"}`,
+    `Alegere: ${p.alegere ? `${p.alegere.nume}${p.alegere.perioada ? `, ${p.alegere.perioada}` : ""}` : "-"}`,
     `Alergii / informații medicale: ${p.alergii || "niciuna declarată"}`,
     `Observații: ${p.observatii || "-"}`,
     `Persoane autorizate la preluare: ${p.preluare.length ? p.preluare.map((x) => `${x.nume} (${x.relatie}, ${x.telefon})`).join("; ") : "doar părintele"}`,

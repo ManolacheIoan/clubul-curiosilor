@@ -1,6 +1,7 @@
-import { MAX_AGE, MIN_AGE, groupForAge, type AgeGroupId } from "@/data/groups";
+import { AGE_GROUPS, MAX_AGE, MIN_AGE, groupForAge, type AgeGroupId } from "@/data/groups";
 import { camps } from "@/data/camps";
 import { programs } from "@/data/programs";
+import { formatPeriod } from "@/lib/dates";
 
 /** O persoană autorizată să preia copilul. */
 export type PickupPerson = { name: string; relation: string; phone: string };
@@ -154,9 +155,23 @@ export function validateAll(d: EnrolmentData): { step: StepId; errors: FieldErro
 export function toPayload(d: EnrolmentData) {
   const c = parseChoice(d.choice);
   return {
-    copil: { nume: d.childName.trim(), varsta: Number(d.childAge), grupa: d.group },
+    copil: {
+      nume: d.childName.trim(),
+      varsta: Number(d.childAge),
+      grupa: d.group,
+      club: AGE_GROUPS.find((g) => g.id === d.group)?.club ?? "",
+    },
     parinte: { nume: d.parentName.trim(), telefon: normalizePhone(d.phone), email: d.email.trim() },
-    alegere: c ? { tip: c.type, slug: c.slug, nume: c.name, saptamana: c.type === "tabara" ? d.period : undefined } : null,
+    alegere: c
+      ? {
+          tip: c.type,
+          slug: c.slug,
+          nume: c.name,
+          /** Data de început (ISO) și perioada scrisă pe înțeles, doar pentru tabere. */
+          saptamana: c.type === "tabara" ? d.period : undefined,
+          perioada: c.type === "tabara" ? periodText(c.periods, d.period) : undefined,
+        }
+      : null,
     alergii: d.allergies.trim(),
     observatii: d.notes.trim(),
     preluare: d.pickup
@@ -164,6 +179,11 @@ export function toPayload(d: EnrolmentData) {
       .map((p) => ({ nume: p.name.trim(), relatie: p.relation.trim(), telefon: normalizePhone(p.phone) })),
     acord: d.consent,
   };
+}
+
+function periodText(periods: { start: string; end: string }[], start: string) {
+  const p = periods.find((x) => x.start === start);
+  return p ? formatPeriod(p.start, p.end) : undefined;
 }
 
 export type EnrolmentPayload = ReturnType<typeof toPayload>;
