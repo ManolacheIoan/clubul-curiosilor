@@ -3079,3 +3079,118 @@ a.contact-card:hover {
     transform: translateY(420px) rotate(540deg);
   }
 }
+
+/* ---------- 404 ---------- */
+
+.lost {
+  padding-block: 40px 24px;
+}
+.lost__inner {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .lost__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.lost__art {
+  position: relative;
+  width: min(100%, 440px);
+  aspect-ratio: 1 / 0.9;
+  justify-self: center;
+}
+.lost__art > * {
+  position: absolute;
+}
+.lost__map {
+  width: 80%;
+  left: 10%;
+  top: 34%;
+  transform: rotate(6deg);
+}
+.lost__compass {
+  width: 26%;
+  left: 37%;
+  top: 2%;
+}
+.lost__compass .compass-needle {
+  transform-box: view-box;
+  transform-origin: 60px 58px;
+}
+.lost__kid {
+  width: 30%;
+  left: 14%;
+  bottom: 0;
+}
+.lost__owl {
+  width: 24%;
+  right: 8%;
+  bottom: 2%;
+}
+.lost__q {
+  font: 700 2.6rem var(--font-display);
+  color: var(--coral-ink);
+}
+.lost__q--a {
+  left: 6%;
+  top: 20%;
+  transform: rotate(-14deg);
+}
+.lost__q--b {
+  left: 30%;
+  top: 32%;
+  font-size: 1.8rem;
+  transform: rotate(10deg);
+}
+.lost__star {
+  width: 9%;
+  right: 12%;
+  top: 8%;
+}
+.lost__leaf {
+  width: 8%;
+  right: 2%;
+  top: 40%;
+}
+.lost__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.lost__links .chip-link {
+  gap: 6px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lost__compass .compass-needle {
+    animation: lost-needle 4s var(--ease-out) infinite;
+  }
+  .lost__kid {
+    animation: look-around 3s ease-in-out infinite;
+    transform-origin: 50% 100%;
+  }
+  .lost__q {
+    animation: float 3s ease-in-out infinite;
+  }
+  .lost__q--b {
+    animation-delay: -1.5s;
+  }
+}
+@keyframes lost-needle {
+  0% { transform: rotate(0); }
+  20% { transform: rotate(220deg); }
+  35% { transform: rotate(140deg); }
+  55% { transform: rotate(520deg); }
+  70% { transform: rotate(470deg); }
+  100% { transform: rotate(720deg); }
+}
+@keyframes look-around {
+  0%, 100% { transform: scaleX(1) rotate(0); }
+  25% { transform: scaleX(1) rotate(-4deg); }
+  50% { transform: scaleX(-1) rotate(0); }
+  75% { transform: scaleX(-1) rotate(4deg); }
+}
