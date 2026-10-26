@@ -7,22 +7,21 @@ import { MobileBar } from "@/components/MobileBar";
 import { BUSINESS_NAME, site } from "@/config/site";
 import "./globals.css";
 
-// Fonturi găzduite local: Fredoka (rotunjit, titluri) și Nunito Sans (text).
-// Fișierul „latin” se preîncarcă; „latin-ext” (ă, ș, ț) vine doar când e nevoie.
+// Fonturi găzduite local: Baloo 2 (rotunjit, titluri; are ă, ș, ț) și Nunito Sans (text).
+// Se preîncarcă fișierele folosite în primul ecran; „latin-ext” al textului (ă, ș, ț) vine imediat după.
 const display = localFont({
-  src: "./fonts/fredoka-latin-wght-normal.woff2",
-  weight: "300 700",
+  src: "./fonts/baloo-2-latin-wght-normal.woff2",
+  weight: "400 800",
   variable: "--font-display-latin",
   display: "swap",
   adjustFontFallback: false,
 });
 const displayExt = localFont({
-  src: "./fonts/fredoka-latin-ext-wght-normal.woff2",
-  weight: "300 700",
+  src: "./fonts/baloo-2-latin-ext-wght-normal.woff2",
+  weight: "400 800",
   variable: "--font-display-ext",
   display: "swap",
   adjustFontFallback: false,
-  preload: false,
 });
 const text = localFont({
   src: "./fonts/nunito-sans-latin-wght-normal.woff2",

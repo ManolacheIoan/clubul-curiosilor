@@ -928,3 +928,462 @@ main:focus {
     animation: none !important;
   }
 }
+
+/* ---------- carduri clicabile ---------- */
+
+.card-link {
+  color: inherit;
+  text-decoration: none;
+}
+.card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+}
+.card-link:focus-visible {
+  outline: none;
+}
+.card-link:focus-visible::after {
+  outline: 3px solid var(--sky-ink);
+  outline-offset: 3px;
+}
+.card-link:hover {
+  color: var(--green);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :is(.program-card, .offer__item, .camp-card, .club):hover .wiggle-target {
+    animation: wiggle 0.6s ease-in-out;
+  }
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  padding-block: 28px 48px;
+  overflow: hidden;
+}
+.hero__blob {
+  position: absolute;
+  pointer-events: none;
+}
+.hero__blob--a {
+  width: 520px;
+  right: -180px;
+  top: -40px;
+}
+.hero__blob--b {
+  width: 300px;
+  left: -140px;
+  bottom: -60px;
+}
+.hero__inner {
+  position: relative;
+  display: grid;
+  gap: 24px;
+  align-items: center;
+}
+.hero__hello {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-weight: 700;
+  color: var(--green);
+}
+.greeting {
+  display: inline-block;
+}
+.greeting__words {
+  display: inline-grid;
+  padding: 4px 14px;
+  border-radius: 999px 999px 999px 4px;
+  background: var(--yellow);
+  color: var(--ink);
+  font: 600 1.15rem var(--font-display);
+}
+.greeting__words > span {
+  grid-area: 1 / 1;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(8px) scale(0.9);
+  transition:
+    opacity 0.3s,
+    transform 0.4s var(--ease);
+}
+.greeting__words > span.is-on {
+  opacity: 1;
+  transform: none;
+}
+.hero h1 {
+  max-width: 14ch;
+}
+.hero__art {
+  position: relative;
+  width: min(100%, 460px);
+  aspect-ratio: 1 / 0.86;
+  justify-self: center;
+}
+.hero__art > * {
+  position: absolute;
+}
+.hero__map {
+  width: 74%;
+  left: 13%;
+  top: 30%;
+  transform: rotate(-4deg);
+}
+.hero__compass {
+  width: 30%;
+  left: 35%;
+  top: 4%;
+}
+.follow-compass .compass-needle {
+  transform-box: view-box;
+  transform-origin: 60px 58px;
+  transform: rotate(var(--needle, 20deg));
+  transition: transform 0.35s var(--ease-out);
+}
+.hero__char {
+  width: 25%;
+}
+.hero__char--owl {
+  left: 0;
+  top: 22%;
+}
+.hero__char--fox {
+  right: 0;
+  top: 18%;
+}
+.hero__char--robot {
+  left: 20%;
+  bottom: 0;
+}
+.hero__char--kid {
+  right: 18%;
+  bottom: 0;
+}
+.hero__cloud {
+  width: 22%;
+  left: 4%;
+  top: 0;
+}
+.hero__star--a {
+  width: 8%;
+  right: 22%;
+  top: 4%;
+}
+.hero__star--b {
+  width: 6%;
+  left: 30%;
+  bottom: 40%;
+}
+.hero__leaf {
+  width: 7%;
+  right: 4%;
+  bottom: 30%;
+}
+@media (min-width: 900px) {
+  .hero {
+    padding-block: 64px 88px;
+  }
+  .hero__inner {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 48px;
+  }
+}
+
+/* ---------- ce oferim ---------- */
+
+.offer,
+.clubs,
+.trust__list,
+.day-preview {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.offer__item {
+  position: relative;
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.3s var(--ease),
+    border-color 0.2s;
+}
+.offer__item:hover {
+  transform: translateY(-4px) rotate(-0.6deg);
+  border-color: var(--green-mid);
+}
+.offer__art {
+  width: 84px;
+  margin-bottom: 14px;
+}
+.offer__item p {
+  color: var(--muted);
+}
+
+/* ---------- cluburi ---------- */
+
+.club {
+  position: relative;
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.club__char {
+  width: 84px;
+}
+.club h3 {
+  margin-top: 8px;
+}
+.club p {
+  color: var(--muted);
+}
+
+/* ---------- încredere ---------- */
+
+.trust__item {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 2px dashed var(--line);
+}
+.trust__item p {
+  margin: 0;
+  color: var(--muted);
+}
+.trust__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--green);
+  color: var(--cream);
+  font-size: 1.3rem;
+  transform: rotate(-6deg);
+}
+.stats {
+  margin-top: 28px;
+}
+.stats dl {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 0;
+}
+@media (min-width: 900px) {
+  .stats dl {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.stats dl > div {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--green);
+  color: var(--cream);
+}
+.stats dd {
+  margin: 0;
+  font: 600 clamp(2.2rem, 7vw, 3.2rem) / 1 var(--font-display);
+  color: var(--white);
+}
+.counter span[aria-hidden] {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+.stats dt {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.trust__more {
+  margin-top: 20px;
+}
+
+/* ---------- o zi (previzualizare) ---------- */
+
+.day-preview {
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
+@media (min-width: 800px) {
+  .day-preview {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .day-preview::before {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 74px;
+    border-top: 4px dashed var(--green-mid);
+  }
+}
+.day-preview__stop {
+  position: relative;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--white);
+  text-align: center;
+}
+.day-preview__time {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--white);
+  font-weight: 800;
+}
+.day-preview__char {
+  width: 76px;
+  margin: 10px auto;
+}
+.day-preview__stop p {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---------- chestionar (teaser) ---------- */
+
+.quiz-teaser {
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  padding: 28px;
+  border-radius: 32px;
+  background: var(--sky-soft);
+}
+.quiz-teaser__art {
+  position: relative;
+  height: 140px;
+}
+.quiz-teaser__magnifier {
+  position: absolute;
+  width: 110px;
+  left: 10%;
+  top: 10px;
+}
+.quiz-teaser__telescope {
+  position: absolute;
+  width: 140px;
+  right: 10%;
+  top: 0;
+}
+@media (min-width: 800px) {
+  .quiz-teaser {
+    grid-template-columns: 320px 1fr;
+    padding: 40px;
+  }
+}
+
+/* ---------- carduri de program și tabără ---------- */
+
+.program-card,
+.camp-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.3s var(--ease),
+    border-color 0.2s;
+}
+.program-card {
+  padding: 20px;
+}
+.program-card:hover,
+.camp-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--green-mid);
+}
+.program-card__art {
+  width: 76px;
+  margin-bottom: 12px;
+}
+.program-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.program-card__mission {
+  margin: 0 0 4px;
+  color: var(--coral-ink);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+.program-card__title {
+  margin-bottom: 8px;
+}
+.program-card__summary {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+.program-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.program-card__facts {
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+}
+.program-card__facts div {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 3px 0;
+}
+.program-card__facts dt {
+  color: var(--green);
+  padding-top: 2px;
+}
+.program-card__facts dd {
+  margin: 0;
+}
+.program-card__price {
+  margin: auto 0 0;
+  padding-top: 12px;
+  border-top: 2px dashed var(--line);
+}
+.program-card__price strong {
+  font: 600 1.35rem var(--font-display);
+  color: var(--green);
+}
+.camp-card {
+  overflow: hidden;
+}
+.camp-card__art {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  height: auto;
+}
+.camp-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 20px 20px;
+}
