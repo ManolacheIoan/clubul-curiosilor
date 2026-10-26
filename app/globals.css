@@ -1835,3 +1835,218 @@ textarea:focus-visible {
   margin: 0;
   color: var(--muted);
 }
+
+/* ---------- harta comorii (o zi la Club) ---------- */
+
+.tmap-section {
+  padding-top: 16px;
+}
+.tmap {
+  position: relative;
+  --p: 1;
+}
+html.js .tmap {
+  --p: 0;
+}
+.tmap__box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 90px);
+  pointer-events: none;
+}
+.tmap__svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 90px);
+  overflow: visible;
+  pointer-events: none;
+}
+.tmap__svg--wide {
+  display: none;
+}
+.tmap__ghost,
+.tmap__ink,
+.tmap__reveal {
+  fill: none;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+.tmap__ghost,
+.tmap__ink {
+  stroke-dasharray: 2 12;
+}
+.tmap__ghost {
+  stroke: var(--line);
+}
+.tmap__ink {
+  stroke: var(--green);
+  stroke-width: 6;
+}
+.tmap__reveal {
+  stroke: #fff;
+  stroke-width: 14;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: calc(1 - var(--p));
+}
+.tmap__marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 54px;
+  margin: -54px 0 0 -27px;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  will-change: transform;
+}
+.tmap__stops {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 44px;
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 0;
+}
+.tmap__stop {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+}
+.tmap__card {
+  position: relative;
+  width: 100%;
+  padding: 20px 20px 20px;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 2px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.tmap__card::before {
+  content: "";
+  position: absolute;
+  left: -38px;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin-top: -11px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 5px solid var(--line);
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    transform 0.4s var(--ease);
+}
+.tmap__stop.is-reached .tmap__card::before,
+html:not(.js) .tmap__card::before {
+  background: var(--yellow);
+  border-color: var(--green);
+  transform: scale(1.25);
+}
+.tmap__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.tmap__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 1.25rem;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    transform 0.5s var(--ease);
+}
+.tmap__stop.is-reached .tmap__icon {
+  background: var(--green);
+  color: var(--cream);
+  transform: rotate(-8deg);
+}
+.tmap__time {
+  margin: 0;
+  font: 600 1.5rem var(--font-display);
+  color: var(--coral-ink);
+}
+.tmap__title {
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+}
+.tmap__card > p {
+  margin-bottom: 8px;
+  padding-right: 64px;
+}
+.tmap__parents {
+  font-size: 0.93rem;
+  color: var(--sky-ink);
+  background: var(--sky-soft);
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+.tmap__char {
+  position: absolute;
+  right: 12px;
+  top: 14px;
+  width: 58px;
+}
+.tmap__treasure {
+  width: 110px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+.tmap__end {
+  text-align: center;
+  margin-top: 24px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .tmap__card {
+    transition:
+      transform 0.5s var(--ease),
+      opacity 0.4s;
+  }
+  html.js .tmap__stop:not(.is-reached) .tmap__card {
+    opacity: 0.55;
+    transform: scale(0.97);
+  }
+}
+@media (min-width: 860px) {
+  .tmap__svg--wide {
+    display: block;
+  }
+  .tmap__svg--narrow {
+    display: none;
+  }
+  .tmap__stops {
+    padding: 0;
+  }
+  .tmap__stop {
+    width: 50%;
+    padding: 16px 48px 16px 0;
+  }
+  .tmap__stop--right {
+    margin-left: 50%;
+    padding: 16px 0 16px 48px;
+  }
+  .tmap__card::before {
+    left: auto;
+    right: -59px;
+  }
+  .tmap__stop--right .tmap__card::before {
+    right: auto;
+    left: -59px;
+  }
+  .tmap__marker {
+    width: 64px;
+    margin: -64px 0 0 -32px;
+  }
+}
