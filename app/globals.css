@@ -2364,3 +2364,111 @@ html:not(.js) .tmap__card::before {
   color: var(--green);
   white-space: nowrap;
 }
+
+/* ---------- întrebări, contact, confidențialitate ---------- */
+
+.faq-group {
+  margin-top: 36px;
+}
+.contact__grid {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .contact__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.contact__cards {
+  display: grid;
+  gap: 14px;
+}
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 2px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.25s var(--ease);
+}
+a.contact-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--green-mid);
+  color: var(--ink);
+}
+.contact-card__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--coral-soft);
+  color: var(--coral-ink);
+  font-size: 1.3rem;
+}
+.contact-card__label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--muted);
+}
+.contact-card__value {
+  display: block;
+  font: 600 1.3rem var(--font-display);
+  overflow-wrap: anywhere;
+}
+.hours {
+  width: 100%;
+  border-collapse: collapse;
+}
+.hours th,
+.hours td {
+  padding: 8px 0;
+  text-align: left;
+  border-bottom: 1px dashed var(--line);
+  vertical-align: top;
+}
+.hours td {
+  text-align: right;
+}
+.contact__map {
+  margin: 0;
+  padding: 24px;
+  border-radius: 32px;
+  background: var(--sky-soft);
+}
+.contact__map-art {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+.contact__scroll {
+  position: absolute;
+  inset: 10% 0 0;
+  width: 100%;
+}
+.contact__kid {
+  position: absolute;
+  width: 26%;
+  left: 12%;
+  bottom: 4%;
+}
+.contact__telescope {
+  position: absolute;
+  width: 26%;
+  right: 4%;
+  top: 0;
+}
+.contact__map figcaption {
+  margin-top: 12px;
+  color: var(--sky-ink);
+  font-weight: 600;
+}
+.privacy {
+  padding-bottom: 32px;
+}
