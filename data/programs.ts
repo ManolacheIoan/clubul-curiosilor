@@ -64,7 +64,7 @@ export const programs: Program[] = [
     sessionMinutes: 360,
     groupMax: 12,
     price: { amount: 1250, per: "lună" },
-    priceNote: "include ajutorul la teme, gustarea de după-amiază și activitățile zilnice; prânzul cald este opțional",
+    priceNote: "prețul include ajutorul la teme, gustarea de după-amiază și activitățile zilnice; prânzul cald este opțional",
     summary:
       "Un loc sigur după ore: temele se fac cu ajutorul unui educator, urmează gustarea, joaca și o misiune nouă în fiecare zi.",
     description: [
