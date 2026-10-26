@@ -1,0 +1,342 @@
+/* ==========================================================================
+   Clubul — stiluri globale. Mobil întâi; culorile sunt aceleași ca în config/theme.ts.
+   ========================================================================== */
+
+:root {
+  --paper: #fbf7ec;
+  --white: #ffffff;
+  --ink: #1e2b26;
+  --muted: #55635d;
+  --green: #1f6b52;
+  --green-dark: #164f3d;
+  --green-soft: #e6f0ea;
+  --green-mid: #5fa383;
+  --yellow: #ffc83d;
+  --cream: #fff4d1;
+  --coral: #f2644f;
+  --coral-ink: #b83c28;
+  --coral-soft: #fde3de;
+  --sky: #4da3d9;
+  --sky-ink: #1b5e8c;
+  --sky-soft: #ddeef8;
+  --line: #e7dfc9;
+
+  --font-display: var(--font-display-latin), var(--font-display-ext), "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+  --font-text: var(--font-text-latin), var(--font-text-ext), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius: 22px;
+  --radius-sm: 14px;
+  --shadow: 0 2px 0 rgba(30, 43, 38, 0.06), 0 12px 28px -14px rgba(30, 43, 38, 0.28);
+  --ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --wrap: 1180px;
+  --gutter: 16px;
+  --header-h: 68px;
+
+  color-scheme: light;
+}
+
+@media (min-width: 720px) {
+  :root {
+    --gutter: 28px;
+    --header-h: 76px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  /* loc pentru bara fixă de pe telefon */
+  padding-bottom: calc(76px + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 900px) {
+  body {
+    padding-bottom: 0;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 8vw, 4rem);
+}
+h2 {
+  font-size: clamp(1.75rem, 5vw, 2.6rem);
+}
+h3 {
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+}
+
+p {
+  margin: 0 0 1em;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--green);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--green-dark);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  padding-left: 1.2em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--sky-ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.skip-link:focus {
+  top: 12px;
+  color: var(--white);
+}
+
+main:focus {
+  outline: none;
+}
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--wrap) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+}
+
+/* ---------- butoane ---------- */
+
+.btn {
+  --btn-bg: var(--white);
+  --btn-fg: var(--ink);
+  --btn-edge: var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 48px;
+  padding: 0.7em 1.3em;
+  border: 2px solid var(--btn-edge);
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: 700 1rem/1.2 var(--font-text);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 0 var(--btn-edge);
+  transform: translateY(0);
+  transition:
+    transform 0.18s var(--ease),
+    box-shadow 0.18s var(--ease),
+    background-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:hover {
+  color: var(--btn-fg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--btn-edge);
+}
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--btn-edge);
+}
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn--primary {
+  --btn-bg: var(--coral);
+  --btn-fg: var(--ink);
+  --btn-edge: var(--coral-ink);
+}
+.btn--green {
+  --btn-bg: var(--green);
+  --btn-fg: var(--white);
+  --btn-edge: var(--green-dark);
+}
+.btn--yellow {
+  --btn-bg: var(--yellow);
+  --btn-fg: var(--ink);
+  --btn-edge: #d9a21f;
+}
+.btn--ghost {
+  --btn-bg: transparent;
+  box-shadow: none;
+}
+.btn--ghost:hover {
+  box-shadow: none;
+  background: var(--white);
+}
+.btn--small {
+  min-height: 40px;
+  padding: 0.45em 1em;
+  font-size: 0.95rem;
+}
+.btn--block {
+  width: 100%;
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-weight: 700;
+}
+.link-arrow .icon {
+  transition: transform 0.25s var(--ease);
+}
+.link-arrow:hover .icon {
+  transform: translateX(4px);
+}
+
+/* ---------- etichete ---------- */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.2em 0.75em;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.tag--yellow {
+  background: var(--cream);
+  color: var(--green);
+}
+.tag--coral {
+  background: var(--coral-soft);
+  color: var(--coral-ink);
+}
+.tag--sky {
+  background: var(--sky-soft);
+  color: var(--sky-ink);
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  color: var(--coral-ink);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.highlight {
+  background: linear-gradient(transparent 60%, var(--yellow) 60%, var(--yellow) 92%, transparent 92%);
+  padding-inline: 0.08em;
+}
+
+/* ---------- logo ---------- */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+}
+.logo__mark {
+  width: 44px;
+  height: 44px;
+  flex: none;
+}
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+.logo__small {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--green);
+  letter-spacing: 0.04em;
+}
+.logo__big {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
