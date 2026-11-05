@@ -4,6 +4,10 @@ Site de prezentare și înscriere pentru un centru educațional pentru copii de 
 
 ![Pagina principală Clubul Curioșilor](docs/screenshot.webp)
 
+## English summary
+
+Portfolio project: a website for a fictional education centre for children aged 4–14. Programs are presented as “missions”, with filters, summer camps, illustrated characters and online sign-up. Built with Next.js and TypeScript, tested with Vitest, Playwright and axe (accessibility). The site itself is in Romanian.
+
 > **Notă: proiect demonstrativ.** Centrul, persoanele, prețurile, perioadele de tabără, telefonul și adresa de e-mail sunt **fictive**. Proiectul face parte dintr-un portofoliu personal. Site-ul arată ca unul final, dar formularul de înscriere **nu trimite nimic** până nu conectezi un backend (vezi mai jos). Paginile au `noindex`, ca să nu apară în motoarele de căutare.
 
 ## Tehnologii
