@@ -2,6 +2,8 @@
 
 Site de prezentare și înscriere pentru un centru educațional pentru copii de 4–14 ani: after-school cu ajutor la teme, cursuri de limbi străine, ateliere (robotică, științe, arte, teatru, muzică, șah, sport, gătit) și tabere în vacanțe. Tema: curiozitate și explorare. Fiecare activitate e o „misiune”, fiecare grupă un „club de exploratori”.
 
+![Pagina principală Clubul Curioșilor](docs/screenshot.webp)
+
 > **Notă: proiect demonstrativ.** Centrul, persoanele, prețurile, perioadele de tabără, telefonul și adresa de e-mail sunt **fictive**. Proiectul face parte dintr-un portofoliu personal. Site-ul arată ca unul final, dar formularul de înscriere **nu trimite nimic** până nu conectezi un backend (vezi mai jos). Paginile au `noindex`, ca să nu apară în motoarele de căutare.
 
 ## Tehnologii
