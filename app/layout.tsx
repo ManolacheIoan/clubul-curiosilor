@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { MobileBar } from "@/components/MobileBar";
 import { BUSINESS_NAME, site } from "@/config/site";
 import "./globals.css";
+import { withBase } from "@/lib/base-path";
 
 // Fonturi găzduite local: Baloo 2 (rotunjit, titluri; are ă, ș, ț) și Nunito Sans (text).
 // Toate patru se preîncarcă: textele românești au ă, ș, ț (din „latin-ext”) chiar în primul ecran.
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
   title: { default: `${BUSINESS_NAME}: ${site.tagline}`, template: `%s | ${BUSINESS_NAME}` },
   description: `${BUSINESS_NAME}: ${site.shortDescription}`,
   robots: { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false } },
-  icons: { icon: "/icon.svg" },
+  icons: { icon: withBase("/icon.svg") },
 };
 
 export const viewport: Viewport = { themeColor: "#FBF7EC" };
