@@ -2,6 +2,8 @@
 
 Site de prezentare și înscriere pentru un centru educațional pentru copii de 4–14 ani: after-school cu ajutor la teme, cursuri de limbi străine, ateliere (robotică, științe, arte, teatru, muzică, șah, sport, gătit) și tabere în vacanțe. Tema: curiozitate și explorare. Fiecare activitate e o „misiune”, fiecare grupă un „club de exploratori”.
 
+**Live:** [manolacheioan.github.io/clubul-curiosilor](https://manolacheioan.github.io/clubul-curiosilor/)
+
 ![Pagina principală Clubul Curioșilor](docs/screenshot.webp)
 
 ## English summary
