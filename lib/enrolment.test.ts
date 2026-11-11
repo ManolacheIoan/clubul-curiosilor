@@ -33,7 +33,7 @@ describe("validateStep", () => {
 
   it("copilul: vârsta în afara intervalului și grupa nepotrivită", () => {
     expect(validateStep("copil", { ...valid, childAge: "3" }).childAge).toMatch(/între 4 și 14/);
-    expect(validateStep("copil", { ...valid, childAge: "12", group: "7-10" }).group).toMatch(/Telescoapelor/);
+    expect(validateStep("copil", { ...valid, childAge: "12", group: "7-10" }).group).toMatch(/Navigatorilor/);
     expect(validateStep("copil", { ...valid, childName: "" }).childName).toBeDefined();
   });
 

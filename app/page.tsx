@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CampCard } from "@/components/CampCard";
 import { Counter } from "@/components/Counter";
 import { CtaBand } from "@/components/CtaBand";
+import { EventList } from "@/components/events/EventList";
 import { FollowCompass } from "@/components/home/FollowCompass";
 import { Greeting } from "@/components/home/Greeting";
 import { ActivityArt } from "@/components/illustrations/ActivityArt";
@@ -15,6 +16,8 @@ import { typicalDay } from "@/data/day";
 import { AGE_GROUPS } from "@/data/groups";
 import { programs } from "@/data/programs";
 import { staff } from "@/data/staff";
+import { todayIso } from "@/lib/dates";
+import { eventItems } from "@/lib/events";
 import { formatLei } from "@/lib/programs";
 
 const offer = [
@@ -290,6 +293,23 @@ export default function Home() {
           <div className="btn-row">
             <Link href="/tabere/" className="btn btn--green">
               Toate taberele și perioadele <ArrowRightIcon />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- calendar ---------- */}
+      <section className="section" aria-labelledby="calendar">
+        <div className="wrap">
+          <Reveal className="section-head">
+            <span className="eyebrow">Calendar</span>
+            <h2 id="calendar">Ce urmează la Club</h2>
+            <p className="lead">Porți deschise, spectacole și ateliere la care sunt invitați și părinții.</p>
+          </Reveal>
+          <EventList items={eventItems()} buildDay={todayIso()} limit={3} />
+          <div className="btn-row">
+            <Link href="/calendar/" className="btn">
+              Tot calendarul <ArrowRightIcon />
             </Link>
           </div>
         </div>

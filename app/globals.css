@@ -551,6 +551,39 @@ main:focus {
 .site-footer__bottom p {
   margin: 0;
 }
+.site-footer__bottom {
+  display: grid;
+  gap: 10px;
+}
+@media (min-width: 900px) {
+  .site-footer__bottom {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  .site-footer__badges {
+    grid-row: span 2;
+  }
+}
+.site-footer__legal {
+  opacity: 0.85;
+}
+.site-footer__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.site-footer__badges a {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
 
 /* ---------- bara de pe telefon ---------- */
 
@@ -3202,4 +3235,92 @@ a.contact-card:hover {
   25% { transform: scaleX(1) rotate(-4deg); }
   50% { transform: scaleX(-1) rotate(0); }
   75% { transform: scaleX(-1) rotate(4deg); }
+}
+
+/* ---------- calendar ---------- */
+
+.events {
+  max-width: 880px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 16px;
+}
+.events-by-month {
+  display: grid;
+  gap: 40px;
+}
+.events__month {
+  margin-bottom: 16px;
+}
+.event {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (min-width: 720px) {
+  .event {
+    gap: 24px;
+    padding: 24px 28px;
+  }
+}
+.event__badge {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  padding: 8px 0 6px;
+  border-radius: var(--radius-sm);
+  background: var(--green);
+  color: var(--white);
+  line-height: 1;
+}
+.event__day {
+  font: 700 1.9rem/1 var(--font-display);
+}
+.event__mon {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--cream);
+}
+.event__body > * {
+  margin: 0;
+}
+.event__body > * + * {
+  margin-top: 8px;
+}
+.event__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.event__title {
+  font-size: clamp(1.2rem, 2.6vw, 1.4rem);
+}
+.event__when {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.event__when > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.event__text {
+  max-width: 62ch;
+}
+.event__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  align-items: center;
+}
+.event__ics {
+  font-weight: 700;
+  color: var(--green);
 }

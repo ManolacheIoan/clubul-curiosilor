@@ -17,6 +17,7 @@ const types = {
   ".woff2": "font/woff2",
   ".txt": "text/plain; charset=utf-8",
   ".json": "application/json",
+  ".webmanifest": "application/manifest+json",
   ".ico": "image/x-icon",
   ".png": "image/png",
 };

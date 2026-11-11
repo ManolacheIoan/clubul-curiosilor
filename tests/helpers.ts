@@ -13,6 +13,8 @@ export const pages = [
   "/intrebari-frecvente/",
   "/contact/",
   "/confidentialitate/",
+  "/termeni/",
+  "/calendar/",
   "/ce-explorator-esti/",
 ];
 

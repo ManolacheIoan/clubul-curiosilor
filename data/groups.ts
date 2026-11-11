@@ -31,7 +31,7 @@ export const AGE_GROUPS: AgeGroup[] = [
   },
   {
     id: "11-14",
-    club: "Clubul Telescoapelor",
+    club: "Clubul Navigatorilor",
     label: "11–14 ani",
     min: 11,
     max: 14,

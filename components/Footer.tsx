@@ -53,6 +53,21 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {BUSINESS_NAME}. Toate personajele și ilustrațiile sunt originale.
         </p>
+        <p className="site-footer__legal">
+          {site.legal.company} · CUI {site.legal.cui} · Reg. Com. {site.legal.regCom}
+        </p>
+        <ul className="site-footer__badges" aria-label="Protecția consumatorilor">
+          <li>
+            <a href={site.legal.anpcUrl} rel="noopener">
+              ANPC
+            </a>
+          </li>
+          <li>
+            <a href={site.legal.anpcSalUrl} rel="noopener">
+              ANPC – SAL: soluționarea alternativă a litigiilor
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   );

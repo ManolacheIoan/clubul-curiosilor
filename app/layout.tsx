@@ -43,7 +43,16 @@ export const metadata: Metadata = {
   title: { default: `${BUSINESS_NAME}: ${site.tagline}`, template: `%s | ${BUSINESS_NAME}` },
   description: `${BUSINESS_NAME}: ${site.shortDescription}`,
   robots: { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false } },
-  icons: { icon: withBase("/icon.svg") },
+  icons: { icon: withBase("/icon.svg"), apple: withBase("/apple-icon.png") },
+  // Previzualizarea la distribuire (WhatsApp, Facebook). Imaginea: scripts/share-images.mjs.
+  metadataBase: new URL(site.url),
+  openGraph: {
+    type: "website",
+    locale: "ro_RO",
+    siteName: BUSINESS_NAME,
+    images: [{ url: withBase("/og.png"), width: 1200, height: 630, alt: `${BUSINESS_NAME}: ${site.tagline}` }],
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = { themeColor: "#FBF7EC" };

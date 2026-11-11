@@ -34,6 +34,7 @@ npm run typecheck
 npm run test:unit    # Vitest
 npm run test:e2e     # Playwright + axe (rulează întâi `npm run build`)
 npm test             # ambele
+node scripts/share-images.mjs  # după build: refă public/og.png (previzualizarea la distribuire) și iconițele
 ```
 
 Testele Playwright folosesc build-ul din `out/`, pornit automat prin `npm run serve`. Prima dată poate fi nevoie de `npx playwright install chromium`.
@@ -45,7 +46,8 @@ app/                      paginile (fiecare folder = o adresă)
   page.tsx                Acasă
   programe/               lista cu filtre + programe/[slug]/ (pagina fiecărui program)
   tabere/  o-zi-la-club/  siguranta/  echipa/  inscriere/  preturi/
-  intrebari-frecvente/  contact/  confidentialitate/  ce-explorator-esti/
+  intrebari-frecvente/  contact/  confidentialitate/  termeni/  calendar/  ce-explorator-esti/
+  manifest.ts             pentru „Adaugă pe ecranul principal” pe telefon
   not-found.tsx           pagina 404 („te-ai rătăcit pe hartă”)
   fonts/                  fișierele de font + licențele OFL
   globals.css             toate stilurile

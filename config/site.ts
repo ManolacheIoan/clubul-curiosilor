@@ -28,6 +28,20 @@ export const site = {
    * Se setează la build: NEXT_PUBLIC_ENROLMENT_ENDPOINT=https://formspree.io/f/xxxx
    */
   enrolmentEndpoint: process.env.NEXT_PUBLIC_ENROLMENT_ENDPOINT ?? "",
+  /**
+   * Domeniul public al site-ului, fără „/” la final. Linkurile spre imaginea de previzualizare
+   * (WhatsApp, Facebook) trebuie să fie absolute. Se poate schimba la build: SITE_URL=https://...
+   */
+  url: process.env.SITE_URL ?? "https://manolacheioan.github.io",
+  /** Datele firmei din subsol și din termeni. Centrul e fictiv: valorile sunt doar exemple. */
+  legal: {
+    company: `${BUSINESS_NAME} SRL`,
+    cui: "RO00000000",
+    regCom: "J00/0000/2026",
+    /** Protecția consumatorilor: legături cerute pe site-urile firmelor din România. */
+    anpcUrl: "https://anpc.ro/",
+    anpcSalUrl: "https://anpc.ro/ce-este-sal/",
+  },
 } as const;
 
 /** Meniul principal (antet) și legăturile din subsol. */
@@ -44,7 +58,9 @@ export const mainNav = [
 export const footerNav = [
   ...mainNav,
   { href: "/ce-explorator-esti/", label: "Ce explorator ești?" },
+  { href: "/calendar/", label: "Calendar" },
   { href: "/intrebari-frecvente/", label: "Întrebări frecvente" },
   { href: "/inscriere/", label: "Înscriere" },
+  { href: "/termeni/", label: "Termeni și condiții" },
   { href: "/confidentialitate/", label: "Confidențialitate și cookie-uri" },
 ] as const;

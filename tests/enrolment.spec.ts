@@ -52,7 +52,7 @@ test.describe("Înscriere", () => {
   test("vârsta alege singură grupa; telefonul și e-mailul greșite sunt semnalate", async ({ page }) => {
     await page.goto("/inscriere/");
     await page.getByLabel("Vârsta").selectOption("12");
-    await expect(page.getByRole("radio", { name: /Clubul Telescoapelor/ })).toBeChecked();
+    await expect(page.getByRole("radio", { name: /Clubul Navigatorilor/ })).toBeChecked();
     await page.getByLabel("Numele și prenumele copilului").fill("Tudor Pop");
     await next(page);
     await page.getByLabel("Numele tău").fill("Ioan Pop");

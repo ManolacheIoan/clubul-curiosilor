@@ -50,7 +50,7 @@ export function Quiz() {
             <Character key={e.id} id={e.character} className={`bounce ${i % 2 ? "bounce--late" : ""}`} />
           ))}
         </div>
-        <h2>Bună, explorator!</h2>
+        <h2>Bună, micule explorator!</h2>
         <p>
           Răspunde la {total} întrebări și află ce fel de explorator ești: inventator, artist, aventurier sau povestitor.
           Nu există răspunsuri greșite!

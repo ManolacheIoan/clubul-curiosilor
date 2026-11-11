@@ -13,3 +13,9 @@ export function formatPeriod(startIso: string, endIso: string): string {
   if (a.m !== b.m) return `${a.d} ${MONTHS[a.m - 1]} – ${b.d} ${MONTHS[b.m - 1]} ${b.y}`;
   return `${a.d}–${b.d} ${MONTHS[a.m - 1]} ${a.y}`;
 }
+
+/** Data de azi ca AAAA-LL-ZZ, după ceasul local. */
+export function todayIso(now = new Date()): string {
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+}
