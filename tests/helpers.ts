@@ -15,6 +15,7 @@ export const pages = [
   "/confidentialitate/",
   "/termeni/",
   "/calendar/",
+  "/spatiul-nostru/",
   "/ce-explorator-esti/",
 ];
 

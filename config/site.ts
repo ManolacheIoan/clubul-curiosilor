@@ -57,6 +57,7 @@ export const mainNav = [
 
 export const footerNav = [
   ...mainNav,
+  { href: "/spatiul-nostru/", label: "Spațiul nostru" },
   { href: "/ce-explorator-esti/", label: "Ce explorator ești?" },
   { href: "/calendar/", label: "Calendar" },
   { href: "/intrebari-frecvente/", label: "Întrebări frecvente" },

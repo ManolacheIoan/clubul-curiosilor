@@ -26,6 +26,9 @@ export default function DayPage() {
           <p className="tmap__end">
             Zilele de tabără arată puțin altfel: <Link href="/tabere/#programul-zilei" className="link-arrow">vezi programul taberelor <ArrowRightIcon /></Link>
           </p>
+          <p className="tmap__end">
+            Curioși unde se întâmplă toate astea? <Link href="/spatiul-nostru/" className="link-arrow">Vezi spațiul nostru <ArrowRightIcon /></Link>
+          </p>
         </div>
       </section>
       <CtaBand title="Vrei să vedeți Clubul împreună?" text="Programează o vizită cu copilul: îi arătăm sala de teme, laboratorul și curtea." />

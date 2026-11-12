@@ -46,7 +46,7 @@ app/                      paginile (fiecare folder = o adresă)
   page.tsx                Acasă
   programe/               lista cu filtre + programe/[slug]/ (pagina fiecărui program)
   tabere/  o-zi-la-club/  siguranta/  echipa/  inscriere/  preturi/
-  intrebari-frecvente/  contact/  confidentialitate/  termeni/  calendar/  ce-explorator-esti/
+  intrebari-frecvente/  contact/  confidentialitate/  termeni/  calendar/  spatiul-nostru/  ce-explorator-esti/
   manifest.ts             pentru „Adaugă pe ecranul principal” pe telefon
   not-found.tsx           pagina 404 („te-ai rătăcit pe hartă”)
   fonts/                  fișierele de font + licențele OFL

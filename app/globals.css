@@ -3324,3 +3324,55 @@ a.contact-card:hover {
   font-weight: 700;
   color: var(--green);
 }
+
+/* ---------- spațiul nostru ---------- */
+
+.rooms {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 24px;
+}
+@media (min-width: 760px) {
+  .rooms {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.room {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 760px) {
+  /* Ultima încăpere, când rămâne singură pe rând: pe toată lățimea, cu desenul în stânga. */
+  .rooms > .room:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+  }
+  .rooms > .room:last-child:nth-child(odd) .room__art {
+    width: 50%;
+    flex: none;
+  }
+}
+.room__art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+}
+.room__body {
+  padding: 20px 22px 24px;
+}
+.room__body > p {
+  margin-top: 0;
+}
+.room__title {
+  font-size: clamp(1.35rem, 3vw, 1.6rem);
+  margin: 0 0 8px;
+}
+.rooms__more {
+  margin-top: 32px;
+}
