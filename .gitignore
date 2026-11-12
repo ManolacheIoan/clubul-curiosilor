@@ -8,3 +8,5 @@ playwright-report/
 lighthouse/
 .DS_Store
 .env*
+node_modules
+*.nosync
