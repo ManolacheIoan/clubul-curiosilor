@@ -39,6 +39,16 @@ node scripts/share-images.mjs  # după build: refă public/og.png (previzualizar
 
 Testele Playwright folosesc build-ul din `out/`, pornit automat prin `npm run serve`. Prima dată poate fi nevoie de `npx playwright install chromium`.
 
+### Proiectul într-un folder sincronizat cu iCloud
+
+Dacă proiectul stă în Documents sau Desktop cu iCloud activ, macOS poate muta fișiere din `node_modules` în cloud, iar build-ul și testele se blochează. Soluția folosită aici: dependențele stau în `deps.nosync/node_modules` (iCloud ignoră folderele `.nosync`), iar `node_modules` e o scurtătură spre el:
+
+```bash
+npm install && mkdir deps.nosync && mv node_modules deps.nosync/ && ln -s deps.nosync/node_modules node_modules
+```
+
+Dacă build-ul dă o eroare ciudată de cache, șterge folderul `.next` (`npm run clean`).
+
 ## Structură
 
 ```
@@ -69,7 +79,7 @@ Tot textul care se schimbă des stă în fișiere TypeScript simple. Editorul (d
 
 | Fișier | Ce conține |
 | --- | --- |
-| `config/site.ts` | numele, telefonul, e-mailul, zona, programul, meniul |
+| `config/site.ts` | numele, telefonul, e-mailul, zona, programul, meniul, datele firmei (CUI, Reg. Com.), adresa site-ului |
 | `data/programs.ts` | programele: descriere, obiective, vârstă, orar, grupă, preț, educator |
 | `data/camps.ts` | taberele, perioadele (cu locuri libere), programul zilei, ce aduc copiii |
 | `data/staff.ts` | echipa și parametrii avatarului ilustrat (păr, ten, ochelari, obiect) |
@@ -78,11 +88,14 @@ Tot textul care se schimbă des stă în fișiere TypeScript simple. Editorul (d
 | `data/prices.ts` | reducerile, costurile suplimentare și regulile de plată |
 | `data/faq.ts`, `data/safety.ts` | întrebările frecvente și textele despre siguranță |
 | `data/groups.ts` | grupele de vârstă (cluburile) și domeniile folosite la filtre |
+| `data/events.ts` | evenimentele din calendar (porți deschise, spectacole, ateliere, termene) |
+| `data/spaces.ts` | încăperile de pe pagina „Spațiul nostru” (ilustrațiile: `components/illustrations/RoomArt.tsx`) |
 
 Exemple:
 
 - **Program nou**: adaugă un obiect în `data/programs.ts`. Pagina lui (`/programe/<slug>/`) se generează singură, apare în filtre, în prețuri și în formularul de înscriere. Câmpul `art` alege ilustrația, `instructor` trebuie să fie un `slug` din `data/staff.ts`.
 - **Locuri în tabără**: schimbă `spotsLeft` la perioada respectivă (0 = complet; formularul nu mai permite alegerea ei).
+- **Eveniment nou**: adaugă un obiect în `data/events.ts` (data `AAAA-LL-ZZ`, opțional ora `from`/`to`). Apare în calendar și, dacă e printre primele trei, pe pagina principală; după ce trece, dispare singur. Începutul taberelor nu se scrie aici: vine automat din `data/camps.ts`.
 - **Chestionar**: fiecare răspuns are `points`, adică puncte pentru unul sau mai multe tipuri. La egalitate câștigă tipul ales mai recent (vezi `lib/quiz.ts`).
 
 ## Redenumirea afacerii
@@ -112,8 +125,8 @@ Pentru alt backend (API propriu, e-mail prin serviciu tranzacțional), implement
 
 ## Rezultate verificate
 
-- Vitest: 57 de teste (filtrare, căutare, adresă, chestionar, validare, adaptor, contrast, date).
-- Playwright: 78 de teste pe telefon și desktop, inclusiv axe fără erori și **nicio cerere externă**.
+- Vitest: 62 de teste (filtrare, căutare, adresă, chestionar, validare, adaptor, contrast, date, calendar).
+- Playwright: 98 de teste pe telefon și desktop, inclusiv axe fără erori și **nicio cerere externă**.
 - Lighthouse (build static servit local, cu compresie): performanță 95–97 pe telefon și 100 pe desktop, accesibilitate 100, bune practici 100, CLS 0 pe toate paginile. SEO 60 este intenționat, din cauza `noindex`.
 
 ## Licențe
